@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import AuthForm from './components/AuthForm';
+import TaskList from './components/TaskList';
+import './App.css'; // Import CSS
 
-function App() {
+const App = () => {
+  const isAuthenticated = () => !!localStorage.getItem('token');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<Navigate to="/api/users/register" />} />
+          <Route path="/login" element={<AuthForm isLogin={true} />} />
+          <Route path="/api/users/register" element={<AuthForm isLogin={false} />} />
+          <Route path="/tasks" element={isAuthenticated() ? <TaskList /> : <Navigate to="/login" />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

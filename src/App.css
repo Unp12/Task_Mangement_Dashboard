@@ -1,38 +1,68 @@
-.App {
-  text-align: center;
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.auth-form,
+.task-form,
+.task-card,
+.task-edit-form {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+input,
+textarea,
+select,
+button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
   color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-display {
+  flex-grow: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .task-card {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
